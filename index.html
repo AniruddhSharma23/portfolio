@@ -21,6 +21,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
+  section,.client-card,.about-card{scroll-margin-top:88px;}
   body{
     background:var(--bg);
     color:var(--text);
@@ -30,7 +31,7 @@
   }
   h1,h2,h3,h4{font-family:'Space Grotesk',system-ui,sans-serif;letter-spacing:-0.01em;}
   a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
   section{padding:96px 0;}
   .eyebrow{
     color:var(--accent);
@@ -50,7 +51,7 @@
   }
   nav{
     display:flex;align-items:center;justify-content:space-between;
-    max-width:1100px;margin:0 auto;padding:16px 24px;
+    max-width:1240px;margin:0 auto;padding:16px 32px;
   }
   .logo{
     width:38px;height:38px;border-radius:8px;
@@ -58,7 +59,7 @@
     display:flex;align-items:center;justify-content:center;
     font-family:'Space Grotesk';font-weight:700;color:#0d1117;font-size:15px;
   }
-  .navlinks{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500;color:var(--text-dim);}
+  .navlinks{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:500;color:var(--text-dim);}
   .navlinks a:hover{color:var(--text);}
   .navlinks .resume-btn{
     color:var(--bg);background:var(--accent);
@@ -173,8 +174,15 @@
   .sub-title{font-weight:600;font-size:15px;color:var(--text);}
   .sub-right{display:flex;align-items:center;gap:14px;}
   .sub-kpi-preview{font-size:12.5px;color:var(--accent);font-weight:600;white-space:nowrap;}
-  .chevron{color:var(--text-dim);transition:transform 0.2s;font-size:13px;}
-  .sub-card[open] .chevron{transform:rotate(180deg);}
+  .chevron{
+    color:var(--text);background:var(--border);
+    width:26px;height:26px;min-width:26px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;
+    transition:transform 0.25s ease,background 0.2s ease,color 0.2s ease;
+  }
+  .sub-card summary:hover .chevron{background:var(--accent);color:#0d1117;}
+  .sub-card[open] .chevron{transform:rotate(180deg);background:var(--accent);color:#0d1117;}
   .sub-body{padding:0 20px 22px;}
   .sub-body .exp-block{margin-top:2px;}
 
@@ -196,6 +204,17 @@
   .proj-card h4{font-size:16px;margin-bottom:8px;}
   .proj-card p{color:var(--text-dim);font-size:14px;margin-bottom:14px;}
   .proj-card a{color:var(--teal);font-size:13.5px;font-weight:600;}
+
+  /* HOBBIES */
+  .hobbies-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:36px;}
+  .hobby-card{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:26px 16px;text-align:center;display:block;
+  }
+  .hobby-card .icon{font-size:28px;margin-bottom:10px;}
+  .hobby-card h4{font-size:14px;color:var(--text);}
+  .hobby-card .sub{font-size:12px;color:var(--teal);margin-top:6px;font-weight:600;}
+  a.hobby-card:hover{border-color:var(--accent);}
 
   /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;}
@@ -220,6 +239,7 @@
     border:1px solid var(--border);border-radius:18px;padding:48px;text-align:center;margin-top:36px;
   }
   .contact-box h2{font-size:30px;margin-bottom:12px;}
+  .contact-box .hook{color:var(--accent);font-size:16px;font-weight:600;margin-bottom:8px;}
   .contact-box p{color:var(--text-dim);margin-bottom:28px;}
   .contact-links{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
   .contact-links a{
@@ -233,10 +253,10 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
   .reveal.visible{opacity:1;transform:translateY(0);}
 
-  .why-card,.client-card,.skill-card,.proj-card,.about-card,.intern-card,.impact-cell{
+  .why-card,.client-card,.skill-card,.proj-card,.about-card,.intern-card,.impact-cell,.hobby-card{
     transition:transform 0.25s ease,box-shadow 0.25s ease,border-color 0.25s ease;
   }
-  .why-card:hover,.skill-card:hover,.proj-card:hover,.about-card:hover,.intern-card:hover{
+  .why-card:hover,.skill-card:hover,.proj-card:hover,.about-card:hover,.intern-card:hover,.hobby-card:hover{
     transform:translateY(-5px);box-shadow:0 14px 28px rgba(0,0,0,0.35);border-color:#2f3b4f;
   }
   .client-card:hover{box-shadow:0 14px 28px rgba(0,0,0,0.3);}
@@ -282,6 +302,17 @@
     nav{position:relative;}
   }
 
+  /* LARGE MONITORS ONLY — laptop/phone untouched below 1400px */
+  @media(min-width:1400px){
+    .wrap{max-width:1640px;}
+    nav{max-width:1640px;}
+    .why-grid{grid-template-columns:repeat(5,1fr);}
+    .skills-grid{grid-template-columns:repeat(6,1fr);}
+    .client-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;align-items:start;}
+    .client-grid .client-card{margin-bottom:0;}
+    .client-grid .client-card:last-child{grid-column:1 / -1;}
+  }
+
   @media(max-width:480px){
     .hero h1{font-size:30px;}
     .impact-grid{grid-template-columns:1fr 1fr;}
@@ -299,8 +330,10 @@
     <div class="navlinks" id="navLinks">
       <a href="#home">Home</a>
       <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#about">About</a>
+      <a href="#contact">Contact</a>
       <a href="Aniruddh_Sharma_Resume_2026.pdf" target="_blank" class="resume-btn">Resume ↗</a>
     </div>
     <button class="navtoggle" id="navToggle" aria-label="Toggle menu">☰</button>
@@ -310,18 +343,19 @@
 <section class="hero" id="home">
   <div class="wrap">
     <div class="badges">
-      <span class="badge">🎓 IIT DELHI '23</span>
-      <span class="badge">🏳 ACCENTURE JAPAN</span>
-      <span class="badge">🏢 CPG &amp; TOBACCO</span>
-      <span class="badge">🛒 E-COMMERCE</span>
-      <span class="badge">🥤 BEVERAGE</span>
-      <span class="badge">🤖 GENAI BUILDER</span>
+      <a href="#journey-iit" class="badge">🎓 IIT DELHI '23</a>
+      <a href="#experience" class="badge">💼 PRODUCT ANALYST</a>
+      <a href="#journey-accenture" class="badge">🏳 ACCENTURE JAPAN</a>
+      <a href="#client-cpg" class="badge">🏢 CPG &amp; TOBACCO</a>
+      <a href="#client-ecommerce" class="badge">🛒 E-COMMERCE</a>
+      <a href="#client-beverage" class="badge">🥤 BEVERAGE</a>
+      <a href="#why" class="badge">🤖 GENAI BUILDER</a>
     </div>
     <div class="hero-grid">
       <div>
         <h1>Aniruddh Sharma</h1>
         <div class="role">PRODUCT · STRATEGY · DATA</div>
-        <p>IIT Delhi engineer turned Product Analyst at Accenture Japan — I chose product over pure engineering because most hard problems aren't technical, they're about aligning people, priorities, and incomplete information. For 3+ years, I've worked across CPG, e-commerce, and beverage clients in 4 countries.</p>
+        <p>IIT Delhi engineer turned Product Analyst at Accenture Japan. I chose product over pure engineering because most hard problems aren't technical, they're about aligning people, priorities, and incomplete information. For 3+ years, I've worked across CPG, e-commerce, and beverage clients in 4 countries.</p>
         <div class="cta-row">
           <a href="#experience" class="btn btn-primary">See My Work →</a>
           <a href="#skills" class="btn btn-ghost">Skills</a>
@@ -395,7 +429,8 @@
     <div class="eyebrow">Experience</div>
     <h2>Professional Experience</h2>
 
-    <div class="client-card">
+    <div class="client-grid">
+    <div class="client-card" id="client-cpg">
       <div class="client-header">
         <h3>Accenture Japan — Business Consultant</h3>
         <div class="client-meta">
@@ -455,7 +490,7 @@
       </details>
     </div>
 
-    <div class="client-card">
+    <div class="client-card" id="client-ecommerce">
       <div class="client-header">
         <h3>Accenture Japan — Senior Product Analyst</h3>
         <div class="client-meta">
@@ -514,7 +549,7 @@
       </details>
     </div>
 
-    <div class="client-card">
+    <div class="client-card" id="client-beverage">
       <div class="client-header">
         <h3>Accenture Japan — Product Analyst</h3>
         <div class="client-meta">
@@ -540,6 +575,7 @@
           </div>
         </div>
       </details>
+    </div>
     </div>
 
     <div class="intern-row">
@@ -608,6 +644,36 @@
   </div>
 </section>
 
+<section id="hobbies">
+  <div class="wrap">
+    <div class="eyebrow">Beyond Work</div>
+    <h2>Hobbies &amp; Interests</h2>
+    <div class="hobbies-grid">
+      <a class="hobby-card" href="https://www.instagram.com/snapsbyani" target="_blank">
+        <div class="icon">📷</div>
+        <h4>Photography</h4>
+        <div class="sub">@snapsbyani ↗</div>
+      </a>
+      <div class="hobby-card">
+        <div class="icon">🏊</div>
+        <h4>Swimming</h4>
+      </div>
+      <div class="hobby-card">
+        <div class="icon">🎌</div>
+        <h4>Anime</h4>
+      </div>
+      <div class="hobby-card">
+        <div class="icon">✈️</div>
+        <h4>Travelling</h4>
+      </div>
+      <div class="hobby-card">
+        <div class="icon">🥾</div>
+        <h4>Hiking</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="about">
   <div class="wrap">
     <div class="eyebrow">About</div>
@@ -631,7 +697,7 @@
           <li>Responsive Web Design — freeCodeCamp</li>
         </ul>
       </div>
-      <div class="about-card">
+      <div class="about-card" id="journey-iit">
         <h4>Journey — IIT Delhi (2019–2023)</h4>
         <ul class="journey-list">
           <li><b>B.Tech, Civil Engineering</b> begins — Jun 2019</li>
@@ -646,7 +712,7 @@
           <li><b>B.Tech</b> completed — May 2023</li>
         </ul>
       </div>
-      <div class="about-card" style="grid-column:1 / -1;">
+      <div class="about-card" id="journey-accenture" style="grid-column:1 / -1;">
         <h4>Journey — Accenture Japan (2023–Present)</h4>
         <ul class="journey-list">
           <li><b>Client: Global Beverage Company</b> — Product Analyst — joined Accenture Japan (Nov 2023–Jan 2025)</li>
@@ -663,9 +729,11 @@
   <div class="wrap">
     <div class="contact-box">
       <h2>Let's Connect</h2>
+      <div class="hook">Love building product, obsessing over data, or just here for the photography? Let's connect.</div>
       <p>Open to Product Management, Strategy &amp; Business Consulting, and Data/Analytics roles.</p>
       <div class="contact-links">
         <a href="mailto:aniruddhsharmajpr@gmail.com">✉ aniruddhsharmajpr@gmail.com</a>
+        <a href="tel:+819058200043">📱 +81 90-5820-0043</a>
         <a href="https://www.linkedin.com/in/aniruddhsharma23/" target="_blank">👥 LinkedIn</a>
         <a href="https://github.com/AniruddhSharma23" target="_blank">💻 GitHub</a>
         <a href="Aniruddh_Sharma_Resume_2026.pdf" target="_blank">📄 Resume ↗</a>
@@ -675,7 +743,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© 2026 Aniruddh Sharma · Built with Claude</div>
+  <div class="wrap">© 2026 Aniruddh Sharma</div>
 </footer>
 
 <button id="backToTop" aria-label="Back to top">↑</button>
@@ -688,7 +756,7 @@
 
   // Scroll-reveal animation
   const revealTargets = document.querySelectorAll(
-    '.why-card,.client-card,.skill-card,.proj-card,.about-card,.intern-card,.impact-cell'
+    '.why-card,.client-card,.skill-card,.proj-card,.about-card,.intern-card,.impact-cell,.hobby-card'
   );
   revealTargets.forEach((el, i) => {
     el.classList.add('reveal');
