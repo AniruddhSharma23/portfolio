@@ -274,6 +274,7 @@
 
   .sub-card summary{transition:background 0.2s ease;}
   .sub-card summary:hover{background:rgba(255,255,255,0.03);}
+  .sub-card summary:active{background:rgba(255,255,255,0.07);}
   @keyframes fadeSlide{
     from{opacity:0;transform:translateY(-6px);}
     to{opacity:1;transform:translateY(0);}
@@ -304,6 +305,12 @@
     .sub-kpi-preview{white-space:normal;}
     .sub-right{width:100%;}
     .chevron{position:absolute;top:16px;right:20px;}
+    .sub-card summary::after{
+      content:"Tap for details ▾";
+      font-size:11px;font-weight:600;color:var(--text-dim);
+      letter-spacing:0.03em;margin-top:2px;
+    }
+    .sub-card[open] summary::after{content:"Tap to collapse ▴";color:var(--accent);}
 
     .navtoggle{display:block;}
     .navlinks{
@@ -458,7 +465,7 @@
         </div>
       </div>
 
-      <details class="sub-card" open>
+      <details class="sub-card">
         <summary>
           <span class="sub-title">Cross-Functional Process Ownership</span>
           <span class="sub-right"><span class="sub-kpi-preview">↓75% delays · ↓90% onboarding · ↓15% overtime · $45K saved/yr</span><span class="chevron">▾</span></span>
@@ -518,7 +525,7 @@
         </div>
       </div>
 
-      <details class="sub-card" open>
+      <details class="sub-card">
         <summary>
           <span class="sub-title">Competitive Analysis &amp; Feature Strategy</span>
           <span class="sub-right"><span class="sub-kpi-preview">↑45% retention · ↑76% traffic</span><span class="chevron">▾</span></span>
@@ -577,7 +584,7 @@
         </div>
       </div>
 
-      <details class="sub-card" open>
+      <details class="sub-card">
         <summary>
           <span class="sub-title">Security Risk Mitigation</span>
           <span class="sub-right"><span class="sub-kpi-preview">↑60% compliance · ↓85% resolution time · ↓70% incidents · ~$24K saved/yr</span><span class="chevron">▾</span></span>
